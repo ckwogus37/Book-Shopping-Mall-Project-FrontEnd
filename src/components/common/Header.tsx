@@ -1,17 +1,107 @@
-import {styled} from "styled-components";
+import { styled } from "styled-components";
+import logo from "../../assets/images/logo.png";
+import { FaSignInAlt, FaRegUser } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { useCategory } from "../../hooks/useCategory";
 
-function Header(){
+function Header() {
+    const {category} = useCategory();
+
     return (
         <HeaderStyle>
-            <h1>book store</h1>
+            <h1 className="logo">
+                <Link to="/">
+                    <img src={logo} alt="bookstore" />
+                </Link>
+            </h1>
+            <nav className="category">
+                <ul>
+                    {category.map((item) => (
+                        <li key={item.category_id}>
+                            <Link
+                                to={item.category_id === null ? "/books" : `/books?category_id=${item.category_id}`}
+                            >
+                                {item.category_name}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+            <nav className="auth">
+                <ul>
+                    <li>
+                        <a href="/login">
+                            <FaSignInAlt />
+                            로그인
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/signup">
+                            <FaRegUser />
+                            회원가입
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </HeaderStyle>
-    )
+    );
 }
 
 const HeaderStyle = styled.header`
-    background-color : ${({theme}) => theme.color.background};
-    h1{
-        color : ${({theme}) => theme.color.primary};
+    width: 100%;
+    margin: 0 auto;
+    max-width: ${({ theme }) => theme.layout.width.large};
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid ${({ theme }) => theme.color.background};
+
+    .logo {
+        img {
+            width: 200px;
+        }
+    }
+
+    .category {
+        ul {
+            display: flex;
+            gap: 32px;
+            li {
+                a {
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    text-decoration: none;
+                    color: ${({ theme }) => theme.color.text};
+
+                    &:hover {
+                        color: ${({ theme }) => theme.color.primary};
+                    }
+                }
+            }
+        }
+    }
+
+    .auth {
+        ul {
+            display: flex;
+            gap: 16px;
+            li {
+                a {
+                    font-size: 1rem;
+                    font-weight: 600;
+                    text-decoration: none;
+                    dispaly: flex;
+                    align-item: center;
+                    line-height: 1;
+
+                    svg {
+                        margin-right: 6px;
+                    }
+                }
+            }
+        }
     }
 `;
 
