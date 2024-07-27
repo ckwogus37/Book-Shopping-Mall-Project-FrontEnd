@@ -32,7 +32,7 @@ function BooksViewSwitcher() {
         if (!searchParams.get(QUERYSTRING.VIEW)) {
             handleSwitch("grid");
         }
-    }, []);
+    },[]);
 
     return (
         <BooksViewSwitcherStyle>

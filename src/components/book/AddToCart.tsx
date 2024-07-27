@@ -3,8 +3,6 @@ import { BookDetail } from "../../models/book.model";
 import InputText from "../common/InputText";
 import Button from "../common/Button";
 import { useState } from "react";
-import { useAlert } from "../../hooks/useAlert";
-import { addCart } from "../../api/carts.api";
 import { Link } from "react-router-dom";
 import { useBook } from "../../hooks/useBook";
 
@@ -28,8 +26,6 @@ function AddToCart({ book }: Props) {
         if (quantity === 1) return;
         setQuantity(quantity - 1);
     };
-
-
 
     return (
         <AddToCartStyle $added={cartAdded}>

@@ -21,18 +21,17 @@ export const useCategory = () => {
         } else {
             setCategory((prev) => {
                 return prev.map((item) => {
-                    if(item.category_id == null){
+                    if (item.category_id == null) {
                         return {
                             ...item,
-                            isActive : true,
-                        }
-                    }else{
+                            isActive: true,
+                        };
+                    } else {
                         return {
                             ...item,
                             isActive: false,
                         };
                     }
-
                 });
             });
         }
@@ -45,7 +44,7 @@ export const useCategory = () => {
                 {
                     category_id: null,
                     category_name: "전체",
-                    isActive : true,
+                    isActive: true,
                 },
                 ...category,
             ];

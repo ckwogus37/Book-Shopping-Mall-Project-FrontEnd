@@ -8,9 +8,7 @@ interface Props {
 }
 
 function ThemeSwitcher() {
-
     const {themeName, toggleTheme} = useContext(ThemeContext)
-
     return <button onClick={toggleTheme}>{themeName}</button>
 }
 

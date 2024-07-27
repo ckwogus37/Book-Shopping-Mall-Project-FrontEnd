@@ -11,7 +11,6 @@ export const useBook = (bookId: string | undefined) => {
     const {isloggedIn} = useAuthStore();
     const {showAlert} = useAlert();
 
-
     const likeToggle = () => {
         if(!isloggedIn){
             showAlert("로그인이 필요합니다");
@@ -60,8 +59,6 @@ export const useBook = (bookId: string | undefined) => {
             setBook(book);
         });
     }, [bookId]);
-
-
 
     return { book, likeToggle, addToCart, cartAdded };
 };

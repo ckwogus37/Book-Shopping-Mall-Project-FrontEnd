@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "./Button";
-import exp from "constants";
 import { FaAngleDown } from "react-icons/fa";
 
 interface Props {
